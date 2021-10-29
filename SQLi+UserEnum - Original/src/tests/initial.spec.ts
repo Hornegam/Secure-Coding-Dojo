@@ -12,22 +12,23 @@ describe("Return User - Integration",()=>{
         .get("/user/1")
         .set({"token":"87645123"})
 
-        const response2 = await request(app).get("/user/2").set({"token":"87645123"})
+        
+        const user = response.body
+        console.log({user})
+        expect(user).toHaveLength(1)
+        expect(user).toEqual([{"CVV": 132, "CreditCard": "2929 1231 3123 3213", "age": 99, "id": 1, "name": "Roberto", "token": 87645123}])
+        
 
-       const user = response.body
-       expect(user).toHaveLength(1)
-       expect(user).toEqual([{"CVV": 132, "CreditCard": "2929 1231 3123 3213", "age": 99, "id": 1, "name": "Roberto", "token": 87645123}])
+        const response2 = await request(app).get("/user/2").set({"token":"876431233"})
 
        const user2 = response2.body
        expect(user2).toHaveLength(1)
        expect(user2).toEqual([{"CVV": 123, "CreditCard": "3213 1231 3123 3213", "age": 99, "id": 2, "name": "Chuck Norris", "token": 876431233}])
     });
 
-
-    
 });
 
-
+ 
 describe("Return User - Unit",()=>{
     it("Should be able to return only one user - Unit Test", async ()=> {
         const userService = new UserService()
@@ -75,5 +76,4 @@ describe("Return User - Unit",()=>{
         expect(user).not.toContain("SQLITE_ERROR")
     })
 
-
-})
+});
