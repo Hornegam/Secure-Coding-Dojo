@@ -7,7 +7,7 @@ class UserController{
     //Lets get this user and rock
 async get_user(request: Request, response: Response){
     const id: {id} = request.params;
-
+    
     //Calling the object
     const userService = new UserService();
 
