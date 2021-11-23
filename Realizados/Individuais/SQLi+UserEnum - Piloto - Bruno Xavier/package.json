@@ -1,0 +1,29 @@
+{
+  "name": "command-injection",
+  "version": "1.0.0",
+  "description": "Cenario de SCD (Secure Coding Dojo)",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/sqlite3": "^3.1.7",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "jest": "^27.3.1",
+    "sqlite3": "^5.0.2",
+    "supertest": "^6.1.6",
+    "ts-jest": "^27.0.7"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "ts-node": "^10.2.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.4.2"
+  }
+}
