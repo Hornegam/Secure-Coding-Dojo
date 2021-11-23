@@ -5,4 +5,6 @@ export interface IUser{
     creditCard?: string;
     cvv?: string;
     token?: string;
+    email?:string;
+    password?:string;
 }

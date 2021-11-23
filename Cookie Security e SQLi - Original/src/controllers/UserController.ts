@@ -4,9 +4,28 @@ import { UserService } from "../services/UserService";
 
 class UserController{
 
+
+async log_user(request: Request, response: Response){
+    const credentials: {user: string, pass: number} = request.body
+    const userService = new UserService();
+
+    const validated = await userService.validate_user(credentials.user, credentials.pass)
+
+    //User not founded
+    if(validated == undefined){
+        return response.status(200).json("Não foi possível fazer login...")
+    }else{
+       await this.get_user(validated.id)
+    }
+    // necessário implementar testes
+    // Fluxo -> Login -> Get User (Validate só pra dar apoio)
+    // Login colocar credenciais ficticias
+    
+    
+}
     //Lets get this user and rock
 async get_user(request: Request, response: Response){
-    const id = request.params;
+    let id = request.params
 
     //调用对象
     const userService = new UserService();
@@ -24,7 +43,9 @@ async get_user(request: Request, response: Response){
     .json(users)
 }
 
-async validate_user(request: Request, response: Response){
+
+
+async validate_user(request?: Request, response?: Response){
     
     const cookie = request.cookies.CookieSession
 
@@ -33,15 +54,7 @@ async validate_user(request: Request, response: Response){
     return response.status(200).json(user)
 }
 
-async log_user(request: Request, response: Response){
-    const credentials: {user, pass} = request.body
 
-    // necessário implementar testes
-    // Fluxo -> Login -> Get User (Validate só pra dar apoio)
-    // Login colocar credenciais ficticias
-
-
-}
 
 
 }

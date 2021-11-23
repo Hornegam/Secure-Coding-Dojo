@@ -12,19 +12,20 @@ class UserService {
         
         const userRepository = new UserRepository()
         
-        const user = await userRepository.get_user(id)
-        
-        const User : IUser = {
-            id: user.id,
-            name: user.name,
-            age: user.age,
-            creditCard: user.CreditCard,
-            cvv: user.CVV,
-            token: user.token,
+        const user : IUser = await userRepository.get_user_by_id(id)
+
+        return user
+
+    }
+
+    async validate_user(user, pass){
+        const userRepository = new UserRepository();
+
+        const user_check : IUser = await userRepository.get_user_by_email(user)
+
+        if(user_check != undefined && user_check.password == pass){
+            return user_check
         }
-
-        return User
-
     }
 }
 
