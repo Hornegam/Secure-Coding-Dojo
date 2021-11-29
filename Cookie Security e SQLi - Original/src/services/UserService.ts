@@ -21,10 +21,14 @@ class UserService {
     async validate_user(user, pass){
         const userRepository = new UserRepository();
 
+        //Look for user by email
         const user_check : IUser = await userRepository.get_user_by_email(user)
 
-        if(user_check != undefined && user_check.password == pass){
+        //My validation is the best!!
+        if(user_check != undefined){
             return user_check
+        }else{
+            return undefined
         }
     }
 }
