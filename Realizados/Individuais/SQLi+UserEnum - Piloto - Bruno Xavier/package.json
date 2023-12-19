@@ -16,8 +16,8 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jest": "^27.3.1",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.1.6",
+    "sqlite3": "^5.0.3",
+    "supertest": "^6.2.0",
     "ts-jest": "^27.0.7"
   },
   "devDependencies": {
